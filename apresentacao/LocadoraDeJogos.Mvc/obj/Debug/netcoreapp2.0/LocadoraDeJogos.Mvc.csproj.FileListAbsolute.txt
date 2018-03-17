@@ -1,0 +1,10 @@
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/bin/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.deps.json
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/bin/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.runtimeconfig.json
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/bin/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.runtimeconfig.dev.json
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/bin/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.dll
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/bin/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.pdb
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.csproj.CoreCompileInputs.cache
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.AssemblyInfoInputs.cache
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.AssemblyInfo.cs
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.dll
+/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/Debug/netcoreapp2.0/LocadoraDeJogos.Mvc.pdb
