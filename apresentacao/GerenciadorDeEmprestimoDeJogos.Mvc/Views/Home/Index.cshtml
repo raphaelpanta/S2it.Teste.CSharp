@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CredenciaisDoUsuario
+@{
     ViewData["Title"] = "Gerenciador de Emprestimo de Jogos";
 }
 <br/>
@@ -8,6 +9,23 @@
   <hr class="my-4">
   <p>Ainda não se cadastrou?</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Inscreva-se</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Cadastro" role="button">Inscreva-se</a>
+  </p>
+  <hr class="my-4">
+  <p>Já sou cadastrado!</p>
+  <p class="lead">
+    <form asp-action="Login" asp-controller="Home" method="POST">
+       <div class="form-group">
+      <label asp-for="Email"></label>
+        <input type="email" class="form-control" asp-for="Email"/>
+        <span asp-validation-for="Email" class="text-danger"></span>
+      </div>
+       <div class="form-group">
+      <label asp-for="Senha"></label>
+        <input type="password" class="form-control" asp-for="Senha"/>
+        <span asp-validation-for="Senha" class="text-danger"></span>
+      </div>
+      <button type="submit" class="btn btn-success btn-lg">Entrar</button>
+    </form>
   </p>
 </div>
