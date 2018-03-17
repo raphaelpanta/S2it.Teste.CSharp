@@ -71,9 +71,18 @@
         <input asp-for="Cidade" type="text" class="form-control"/>
         <span asp-validation-for="Cidade" class="text-danger"></span>
     </div>
+
+    @{
+        ViewBag.Lista = new List<SelectListItem> {
+            new SelectListItem {Value = null, Text = "Selecione"},
+            new SelectListItem { Value = "AC", Text = "Acre" },
+            new SelectListItem { Value = "SP", Text = "São Paulo" },
+            new SelectListItem { Value = "SE", Text = "Sergipe" }
+        }; 
+    }
      <div class="form-group">
         <label asp-for="UnidadeFederativa"></label>
-        <select asp-for="UnidadeFederativa" asp-items="Model.Unidades" class="form-control"></select>
+        <select asp-for="UnidadeFederativa" asp-items="ViewBag.Lista" class="form-control"></select>
         <span asp-validation-for="UnidadeFederativa" class="text-danger"></span>
     </div>
    

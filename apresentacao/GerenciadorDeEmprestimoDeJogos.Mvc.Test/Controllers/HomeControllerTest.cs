@@ -2,8 +2,7 @@ using GerenciadorDeEmprestimoDeJogos.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 using FluentAssertions;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Services;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 {
@@ -53,7 +52,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             var result = homeController.Login(credenciaisIncompletas) as ViewResult;
 
             result.Should().NotBeNull();
-            result.ViewName.Should().Be("Home");
+            result.ViewName.Should().Be("Index");
             result.Model.Should().BeEquivalentTo(new CredenciaisDoUsuario{
                 Email = "raphaelpanta@gmail.com",
             });

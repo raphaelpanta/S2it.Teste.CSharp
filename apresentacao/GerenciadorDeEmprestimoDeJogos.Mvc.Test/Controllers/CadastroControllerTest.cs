@@ -1,7 +1,7 @@
 using System;
 using FluentAssertions;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 using GerenciadorDeEmprestimoDeJogos.Mvc.Controllers;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
@@ -10,7 +10,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
     public class CadastroControllerTest
     {
         [Fact]
-        public void ShouldRenderView() {
+        public void DeveREnderizarAView() {
             var controller = new CadastroController();
             var result = controller.Index() as ViewResult;
 
@@ -21,7 +21,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 
 
         [Fact]
-        public void ShouldRedirectToHome() {
+        public void DeveRedirecionarAHome() {
             var controller = new CadastroController();
             var result = controller.Index(new DadosDoUsuario{
                 Nome = "Raphael Pantaleão",
@@ -44,7 +44,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
         }
 
         [Fact]
-        public void ShouldRerenderViewWithAIncompleteModel(){
+        public void DeveReredenrizarViewQuandoCredenciaisIncompletas(){
             var controller = new CadastroController();
 
             controller.ModelState.AddModelError("Email", "preencher email");  
@@ -58,7 +58,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             result.ViewName.Should().BeNullOrEmpty();
             result.Model.Should().BeEquivalentTo(
                 new DadosDoUsuario{
-                    Nome = "Raphael ",
+                     Nome = "Raphael ",
                 });
         }
     }

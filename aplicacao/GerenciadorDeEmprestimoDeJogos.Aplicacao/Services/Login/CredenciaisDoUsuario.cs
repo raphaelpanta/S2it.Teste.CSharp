@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro
+namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login
 {
     public class CredenciaisDoUsuario
     {

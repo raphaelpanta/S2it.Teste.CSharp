@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Services;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

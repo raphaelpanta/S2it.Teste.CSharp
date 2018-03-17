@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GerenciadorDeEmprestimoDeJogos.Mvc\GerenciadorDeEmprestimoDeJogos.Mvc.csproj" />
+    <ProjectReference Include="..\..\aplicacao\GerenciadorDeEmprestimoDeJogos.Aplicacao\GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj" />
   </ItemGroup>
 
 </Project>

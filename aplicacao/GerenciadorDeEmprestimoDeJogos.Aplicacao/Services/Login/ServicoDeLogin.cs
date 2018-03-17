@@ -1,6 +1,5 @@
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro;
 
-namespace GerenciadorDeEmprestimoDeJogos.Mvc.Services
+namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login
 {
     public class ServicoDeLogin : IServicoDeLogin
     {

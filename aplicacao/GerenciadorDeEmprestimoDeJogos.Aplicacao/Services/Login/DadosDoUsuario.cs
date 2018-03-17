@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro
+namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login
 {
     public class DadosDoUsuario : IValidatableObject
     {
@@ -71,12 +70,6 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro
             "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"
         };
 
-        public List<SelectListItem> Unidades {get;} = new List<SelectListItem> {
-            new SelectListItem {Value = null, Text = "Selecione"},
-            new SelectListItem { Value = "AC", Text = "Acre" },
-            new SelectListItem { Value = "SP", Text = "São Paulo" },
-            new SelectListItem { Value = "SE", Text = "Sergipe" }
-        }; 
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

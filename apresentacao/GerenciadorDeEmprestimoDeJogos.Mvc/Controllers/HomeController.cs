@@ -4,9 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Models.Cadastro;
-using GerenciadorDeEmprestimoDeJogos.Mvc.Services;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Models;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
