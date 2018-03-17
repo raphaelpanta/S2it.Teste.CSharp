@@ -12542,11 +12542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/LocadoraDeJogos.Mvc.csproj",
-      "projectName": "LocadoraDeJogos.Mvc",
-      "projectPath": "/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/LocadoraDeJogos.Mvc.csproj",
+      "projectUniqueName": "/home/rpantaleao/s2it-test-c#/apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc/GerenciadorDeEmprestimoDeJogos.Mvc.csproj",
+      "projectName": "GerenciadorDeEmprestimoDeJogos.Mvc",
+      "projectPath": "/home/rpantaleao/s2it-test-c#/apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc/GerenciadorDeEmprestimoDeJogos.Mvc.csproj",
       "packagesPath": "/home/rpantaleao/.nuget/packages/",
-      "outputPath": "/home/rpantaleao/s2it-test-c#/apresentacao/LocadoraDeJogos.Mvc/obj/",
+      "outputPath": "/home/rpantaleao/s2it-test-c#/apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

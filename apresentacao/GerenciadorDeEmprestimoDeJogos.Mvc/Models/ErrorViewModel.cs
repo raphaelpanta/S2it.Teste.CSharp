@@ -1,6 +1,6 @@
 using System;
 
-namespace LocadoraDeJogos.Mvc.Models
+namespace GerenciadorDeEmprestimoDeJogos.Mvc.Models
 {
     public class ErrorViewModel
     {

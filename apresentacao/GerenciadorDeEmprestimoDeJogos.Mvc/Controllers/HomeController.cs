@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using LocadoraDeJogos.Mvc.Models;
+using GerenciadorDeEmprestimoDeJogos.Mvc.Models;
 
-namespace LocadoraDeJogos.Mvc.Controllers
+namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
     public class HomeController : Controller
     {
