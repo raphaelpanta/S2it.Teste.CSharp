@@ -4760,10 +4760,21 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "GerenciadoDeEmprestimoDeJogos.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/GerenciadoDeEmprestimoDeJogos.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciadoDeEmprestimoDeJogos.Dominio.dll": {}
+        }
+      },
       "GerenciadorDeEmprestimoDeJogos.Aplicacao/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "GerenciadoDeEmprestimoDeJogos.Dominio": "1.0.0",
           "System.ComponentModel.Annotations": "4.4.1"
         },
         "compile": {
@@ -4771,6 +4782,20 @@
         },
         "runtime": {
           "bin/placeholder/GerenciadorDeEmprestimoDeJogos.Aplicacao.dll": {}
+        }
+      },
+      "GerenciadorDeEmprestimos.EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "GerenciadoDeEmprestimoDeJogos.Dominio": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.2"
+        },
+        "compile": {
+          "bin/placeholder/GerenciadorDeEmprestimos.EntityFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GerenciadorDeEmprestimos.EntityFramework.dll": {}
         }
       }
     }
@@ -12567,17 +12592,30 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "GerenciadoDeEmprestimoDeJogos.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../../dominio/GerenciadoDeEmprestimoDeJogos.Dominio/GerenciadoDeEmprestimoDeJogos.Dominio.csproj",
+      "msbuildProject": "../../dominio/GerenciadoDeEmprestimoDeJogos.Dominio/GerenciadoDeEmprestimoDeJogos.Dominio.csproj"
+    },
     "GerenciadorDeEmprestimoDeJogos.Aplicacao/1.0.0": {
       "type": "project",
       "path": "../../aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj",
       "msbuildProject": "../../aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj"
+    },
+    "GerenciadorDeEmprestimos.EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../../infraestrutura/GerenciadorDeEmprestimos.EntityFramework/GerenciadorDeEmprestimos.EntityFramework.csproj",
+      "msbuildProject": "../../infraestrutura/GerenciadorDeEmprestimos.EntityFramework/GerenciadorDeEmprestimos.EntityFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "GerenciadoDeEmprestimoDeJogos.Dominio >= 1.0.0",
       "GerenciadorDeEmprestimoDeJogos.Aplicacao >= 1.0.0",
+      "GerenciadorDeEmprestimos.EntityFramework >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.6",
       "Microsoft.AspNetCore.Buffering >= 0.2.2",
+      "Microsoft.EntityframeworkCore.InMemory >= 2.0.2",
       "Microsoft.NETCore.App >= 2.0.0"
     ]
   },
@@ -12611,6 +12649,12 @@
           "projectReferences": {
             "/home/rpantaleao/s2it-test-c#/aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj": {
               "projectPath": "/home/rpantaleao/s2it-test-c#/aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao/GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj"
+            },
+            "/home/rpantaleao/s2it-test-c#/dominio/GerenciadoDeEmprestimoDeJogos.Dominio/GerenciadoDeEmprestimoDeJogos.Dominio.csproj": {
+              "projectPath": "/home/rpantaleao/s2it-test-c#/dominio/GerenciadoDeEmprestimoDeJogos.Dominio/GerenciadoDeEmprestimoDeJogos.Dominio.csproj"
+            },
+            "/home/rpantaleao/s2it-test-c#/infraestrutura/GerenciadorDeEmprestimos.EntityFramework/GerenciadorDeEmprestimos.EntityFramework.csproj": {
+              "projectPath": "/home/rpantaleao/s2it-test-c#/infraestrutura/GerenciadorDeEmprestimos.EntityFramework/GerenciadorDeEmprestimos.EntityFramework.csproj"
             }
           }
         }
@@ -12631,6 +12675,10 @@
           "Microsoft.AspNetCore.Buffering": {
             "target": "Package",
             "version": "[0.2.2, )"
+          },
+          "Microsoft.EntityframeworkCore.InMemory": {
+            "target": "Package",
+            "version": "[2.0.2, )"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",

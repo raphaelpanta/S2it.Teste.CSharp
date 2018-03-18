@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Buffering" Version="0.2.2" />
+    <PackageReference Include="Microsoft.EntityframeworkCore.InMemory" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\aplicacao\GerenciadorDeEmprestimoDeJogos.Aplicacao\GerenciadorDeEmprestimoDeJogos.Aplicacao.csproj" />
+    <ProjectReference Include="..\..\infraestrutura\GerenciadorDeEmprestimos.EntityFramework\GerenciadorDeEmprestimos.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\dominio\GerenciadoDeEmprestimoDeJogos.Dominio\GerenciadoDeEmprestimoDeJogos.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

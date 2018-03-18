@@ -9,5 +9,8 @@ namespace GerenciadorDeEmprestimos.EntityFramework
 
         public DbSet<Jogo> Jogos {get;set;}
 
+        public EmprestimoContext(DbContextOptions<EmprestimoContext> options): base(options) {
+                
+        }
     }
 }

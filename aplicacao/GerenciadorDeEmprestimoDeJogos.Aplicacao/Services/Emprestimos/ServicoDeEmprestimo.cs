@@ -28,7 +28,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
                 .Select(je => new JogoEmprestado {
                    EmprestimoId = je.Id,
                    Nome = je.Jogo.Nome,
-                   Amigo = je.Amigo.Nome,
+                   Amigo = je.Jogo.Dono.Nome,
                    Sistema = je.Jogo.Sistema
                 }),
                MeusJogos = x.Jogos
