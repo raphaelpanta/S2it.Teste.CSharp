@@ -1,3 +1,4 @@
+using System;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,5 +13,12 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
             _servicoDeEmprestimo = servicoDeEmprestimo;
         }
         public IActionResult Index() => View(_servicoDeEmprestimo.DadosDeEmprestimo(""));
+
+        [HttpPost]
+        public IActionResult RemoverAmigo(Guid id)
+        {
+            _servicoDeEmprestimo.DefazerAmizadePorId(id);
+            return RedirectToAction("Index");
+        }
     }
 }

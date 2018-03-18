@@ -6,7 +6,7 @@
   <hr class="my-4">
 
     <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Amigos <button class="btn btn-success btn-sm">Adicionar</button></div>
+        <div class="card-header">Amigos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Amigos">Adicionar</a></div>
         <div class="card-body">
             <h4 class="card-title">Quais são seus amigos?</h4>
              <table class="table table-condensed table-striped">
@@ -28,7 +28,9 @@
                         <td>@row.JogosEmprestados
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger btn-block">Remover</button>
+                            <form asp-action="RemoverAmigo" asp-controller="Principal" asp-route-id="@row.AmigoId">
+                                <button type="submit" class="btn btn-danger btn-block">Remover</button>
+                            </form>
                         </td>
                     </tr>
                     }

@@ -1,0 +1,34 @@
+using System;
+using System.Linq;
+using FluentAssertions;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos;
+using GerenciadorDeEmprestimoDeJogos.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using Xunit;
+
+namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
+{
+    public class PrincipalControllerTest
+    {
+        [Fact]
+        public void DeveRemoverAmizade(){
+            var servico = new Mock<IServicoDeEmprestimo>();
+            var id = Guid.NewGuid();
+            servico.Setup(x =>x.DefazerAmizadePorId(id));
+            servico.Setup(x => x.DadosDeEmprestimo("")).Returns(new DadosDoEmprestimo {
+                JogosEmprestados = Enumerable.Empty<JogoEmprestado>(),
+                Amigos = Enumerable.Empty<DadosDeAmigo>(),
+                MeusJogos = Enumerable.Empty<DadosDeJogo>()
+            });
+
+            var controller = new PrincipalController(servico.Object);
+
+            var result = controller.RemoverAmigo(id) as RedirectToActionResult;
+
+            result.Should().NotBeNull();
+
+            result.ActionName.Should().Be("Index");
+        }
+    }
+}
