@@ -46,6 +46,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login
         public string Endereco {get;set; }
 
         [Display(Name = "Número de sua residência")]
+        [Range(0,9999)]
         public int? Numero {get;set;}
 
         [Display(Name = "Complemento:")]
