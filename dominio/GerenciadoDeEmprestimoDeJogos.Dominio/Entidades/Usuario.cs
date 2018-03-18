@@ -20,5 +20,6 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Entidades
 
         public ICollection<Jogo> Jogos { get; set; }
 
+        public ICollection<Emprestimo> Emprestimos { get; set; }
     }
 }
