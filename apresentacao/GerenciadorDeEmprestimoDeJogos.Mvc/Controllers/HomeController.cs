@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
@@ -21,6 +24,15 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
         [HttpPost]
         public IActionResult Login(CredenciaisDoUsuario credenciais) {
             if(ModelState.IsValid && _servicoDeLogin.Validar(credenciais)) {
+                var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+                identity.AddClaim(new Claim("email", credenciais.Email));
+                
+                HttpContext
+                .SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme, 
+                    new ClaimsPrincipal(identity))
+                .Wait();
+
                 return Redirect("Principal");
             }
             return View("Index", credenciais);

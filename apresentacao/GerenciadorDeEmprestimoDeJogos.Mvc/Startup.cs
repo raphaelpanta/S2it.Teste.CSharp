@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Jogos;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,6 +33,11 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc
             .AddScoped<IServicoDeEmprestimo, ServicoDeEmprestimo>()
             .AddScoped<IServicoDeAmigos, ServicoDeAmigos>()
             .AddScoped<IServicoDeJogos, ServicoDeJogos>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => o.LoginPath = new PathString("/Home"));
+
+            services.AddTransient<ClaimsPrincipal>(s => s.GetService<HttpContextAccessor>()?.HttpContext?.User);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +63,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            app.UseAuthentication();
         }
     }
 }
