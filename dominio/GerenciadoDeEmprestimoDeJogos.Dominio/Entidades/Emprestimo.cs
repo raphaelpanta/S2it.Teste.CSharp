@@ -5,8 +5,7 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Entidades {
     public class Emprestimo {
         
         public Guid Id {get; set;}
-        public Usuario Amigo { get; set; }
-
+        public Usuario Usuario {get; set;}
         public Jogo Jogo { get; set; }
 
         public DateTime DataDeEmprestimo { get; set; }
