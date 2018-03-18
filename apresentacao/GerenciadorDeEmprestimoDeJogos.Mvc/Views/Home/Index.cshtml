@@ -4,6 +4,13 @@
 }
 <br/>
 <div class="jumbotron">
+  @if(!string.IsNullOrEmpty(TempData["Succeso"] as String))
+  {
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Parabéns!</strong> Agora você poderá se logar no sistema com seu e-mail e senha.
+    </div>
+  }
   <h1 class="display-3">Olá, gamer!</h1>
   <p class="lead">Um Gerenciador de  Emprestimo de Jogos para nossos desenvolvedores gamers da S2it!</p>
   <hr class="my-4">

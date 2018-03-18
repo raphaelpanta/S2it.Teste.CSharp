@@ -10,13 +10,21 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
     public class CadastroController : Controller
     {
+
+        private readonly IServicoDeLogin _servicoDeLogin;
+
+        public CadastroController(IServicoDeLogin servicoDeLogin) {
+            _servicoDeLogin = servicoDeLogin;
+        }
         public IActionResult Index() => View(new DadosDoUsuario());
 
         [HttpPost]
-        public IActionResult Index(DadosDoUsuario dados) {
+        public IActionResult Cadastrar(DadosDoUsuario dados) {
             if(ModelState.IsValid) 
             { 
-                return Redirect("Home");
+                _servicoDeLogin.Cadastrar(dados);
+                TempData["Sucesso"] = "Cadastrado com sucesso! Por favor entrar novamente com suas credenciais";
+                return RedirectToAction("Index","Home");
             } 
 
             return View(dados);

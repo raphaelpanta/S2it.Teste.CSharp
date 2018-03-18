@@ -32,6 +32,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login
         [Required]
         [Display(Name = "Repita sua senha: ")]
         [StringLength(20, MinimumLength = 6)]
+        [Compare(nameof(Senha))]
         public string RepetirSenha {get; set;}
 
         [Required]
