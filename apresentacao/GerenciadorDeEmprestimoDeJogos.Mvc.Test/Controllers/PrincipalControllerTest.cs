@@ -30,5 +30,25 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 
             result.ActionName.Should().Be("Index");
         }
+
+          [Fact]
+        public void DeveRemoverJogo(){
+            var servico = new Mock<IServicoDeEmprestimo>();
+            var id = Guid.NewGuid();
+            servico.Setup(x =>x.RemoverJogoPorId(id));
+            servico.Setup(x => x.DadosDeEmprestimo("")).Returns(new DadosDoEmprestimo {
+                JogosEmprestados = Enumerable.Empty<JogoEmprestado>(),
+                Amigos = Enumerable.Empty<DadosDeAmigo>(),
+                MeusJogos = Enumerable.Empty<DadosDeJogo>()
+            });
+
+            var controller = new PrincipalController(servico.Object);
+
+            var result = controller.RemoverJogo(id) as RedirectResult;
+
+            result.Should().NotBeNull();
+
+            result.Url.Should().Contain("Principal");
+        }
     }
 }

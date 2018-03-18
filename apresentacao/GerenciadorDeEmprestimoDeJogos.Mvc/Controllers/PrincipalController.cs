@@ -20,5 +20,11 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
             _servicoDeEmprestimo.DefazerAmizadePorId(id);
             return RedirectToAction("Index");
         }
+
+           [HttpPost]
+        public IActionResult RemoverJogo(Guid id) {
+            _servicoDeEmprestimo.RemoverJogoPorId(id);
+            return Redirect("Principal");
+        }
     }
 }

@@ -40,7 +40,7 @@
     </div>
 
     <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Meus jogos <button class="btn btn-success btn-sm">Adicionar</button></div>
+        <div class="card-header">Meus jogos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Jogo">Adicionar</a></div>
         <div class="card-body">
             <h4 class="card-title">Quais seus jogos?</h4>
              <table class="table table-condensed table-striped">
@@ -50,7 +50,7 @@
                         <th scope="col">Sistema</th>
                         <th scope="col">Ano</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Remover</th>
+                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,7 +69,13 @@
                            @row.Status
                         </td>
                          <td>
-                            <button type="button" class="btn btn-danger btn-block">Remover</button>
+                         <form asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId">
+                            <button type="submit" class="btn btn-warning btn-block">Editar</button>
+                         </form>
+                         <form asp-action="RemoverJogo" asp-controller="Principal" asp-route-id="@row.JogoId">
+                            <button type="submit" class="btn btn-danger btn-block">Remover</button>
+                         </form>
+                          
                         </td>
                     </tr>
                     }

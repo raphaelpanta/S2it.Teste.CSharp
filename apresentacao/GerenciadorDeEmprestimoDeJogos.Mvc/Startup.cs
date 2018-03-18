@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos;
+using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Jogos;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Login;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,8 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc
             services.AddMvc();
             services.AddScoped<IServicoDeLogin, ServicoDeLogin>()
             .AddScoped<IServicoDeEmprestimo, ServicoDeEmprestimo>()
-            .AddScoped<IServicoDeAmigos, ServicoDeAmigos>();
+            .AddScoped<IServicoDeAmigos, ServicoDeAmigos>()
+            .AddScoped<IServicoDeJogos, ServicoDeJogos>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
