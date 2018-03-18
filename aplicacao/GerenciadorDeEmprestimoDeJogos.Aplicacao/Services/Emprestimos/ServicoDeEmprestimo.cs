@@ -1,39 +1,66 @@
 using System;
+using System.Linq;
+using System.Security.Claims;
+using GerenciadoDeEmprestimoDeJogos.Dominio.Api;
 
-namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
-{
-    public class ServicoDeEmprestimo : IServicoDeEmprestimo
-    {
-        public DadosDoEmprestimo DadosDeEmprestimo(string usuario) 
-            => new DadosDoEmprestimo {
-                JogosEmprestados = new [] {
-                    new JogoEmprestado { EmprestimoId = Guid.NewGuid(), Nome = "Chrono Trigger", Amigo = "Leonardo", Sistema = "Super Nintendo" },
-                    new JogoEmprestado { EmprestimoId = Guid.NewGuid(), Nome = "Sonic 3D", Amigo = "André", Sistema = "Mega Driver"}
-                },
-                Amigos = new [] {
-                    new DadosDeAmigo { AmigoId = Guid.NewGuid(), Nome = "André", InicioDaAmizade = new DateTime(2016, 2, 2),  JogosEmprestados = 0 },
-                    new DadosDeAmigo { AmigoId = Guid.NewGuid(), Nome = "Leonardo", InicioDaAmizade = new DateTime(2017, 2, 3), JogosEmprestados = 1 }
-                },
-                MeusJogos = new [] {
-                    new DadosDeJogo { JogoId = Guid.NewGuid(),  Nome = "Silent Hill", Sistema = "PlayStation", Ano = 2001, Status = "Livre" },
-                    new DadosDeJogo { JogoId = Guid.NewGuid(), Nome = "Final Fantasy XV", Sistema = "PlayStation 4/PRO", Ano = 2016, Status = "Livre" }
-                }
-            };
+namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
+    public class ServicoDeEmprestimo : IServicoDeEmprestimo {
 
-        public void DevolverJogoPorId(Guid emprestimoId)
-        {
-            throw new NotImplementedException();
+        private readonly IRepositorioDeEmprestimo _repositorio;
+
+        private readonly ClaimsPrincipal _principal;
+
+        public ServicoDeEmprestimo(IRepositorioDeEmprestimo repositorio, ClaimsPrincipal principal) {
+            _repositorio = repositorio;
+            _principal = principal;
         }
 
-        public void DefazerAmizadePorId(Guid amigoId)
-        {
-             throw new NotImplementedException();
+        public DadosDoEmprestimo DadosDeEmprestimo () {
+          return  _repositorio.PorEmail(_principal.Claims.First(x => x.Type == "email").Value)
+          .Select(x => new DadosDoEmprestimo {
+              Amigos = x.Amigos.Select(a => new DadosDeAmigo {
+                  Nome = a.Usuario.Nome,
+                  AmigoId = a.Id,
+                  InicioDaAmizade = a.InicioDaAmizade,
+                  JogosEmprestados = 0
+              }),
+              JogosEmprestados = x.Emprestimos
+                .Select(je => new JogoEmprestado {
+                   EmprestimoId = je.Id,
+                   Nome = je.Jogo.Nome,
+                   Amigo = je.Amigo.Nome,
+                   Sistema = je.Jogo.Sistema
+                }),
+               MeusJogos = x.Jogos
+                .Select(j => new DadosDeJogo {
+                    JogoId = j.Id,
+                    Sistema = j.Sistema,
+                    Nome = j.Nome,
+                    Ano = j.Ano,
+                    Status = j.Emprestimo == null ? "Livre" : "Emprestado"
+                })       
+              }).First();
+    
+
         }
 
-        public void RemoverJogoPorId(Guid jogoId)
-        {
-            throw new NotImplementedException();
+        public void DevolverJogoPorId (Guid emprestimoId) {
+           var emprestimo =_repositorio.EmprestimoPor(_principal.Claims.First(x => x.Type == "email").Value, emprestimoId);
+           _repositorio.RegistrarDevolucao(emprestimo.First());
         }
 
+        public void DefazerAmizadePorId (Guid amigoId) 
+           {
+                _repositorio.DesfazerAmizade(_principal.Claims.First(x => x.Type == "email").Value, amigoId);
+           }
+
+        public void RemoverJogoPorId (Guid jogoId) {
+            _repositorio.RemoverJogo(_principal.Claims.First(x => x.Type == "email").Value, jogoId);
+        }
+
+        public void TomarEmprestadoPor (Guid jogoId) {
+
+            _repositorio.RegistrarEmprestimo(_principal.Claims.First(x => x.Type == "email").Value, jogoId);
+        }
     }
 }
