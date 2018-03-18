@@ -1,0 +1,113 @@
+@model DadosDoEmprestimo
+<br />
+<div class="jumbotron">
+  <h1 class="display-3">Olá, xxxx!</h1>
+  <p class="lead">Nesta página poderá gerenciar seus emprestimos</p>
+  <hr class="my-4">
+
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Amigos <button class="btn btn-success btn-sm">Adicionar</button></div>
+        <div class="card-body">
+            <h4 class="card-title">Quais são seus amigos?</h4>
+             <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Início da Amizade</th>
+                        <th scope="col">Jogos Emprestados</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var row in Model.Amigos) {
+                    <tr scope="row">
+                        <td>@row.Nome
+                        </td>
+                        <td>@row.InicioDaAmizade
+                        </td/>
+                        <td>@row.JogosEmprestados
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-block">Remover</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Meus jogos <button class="btn btn-success btn-sm">Adicionar</button></div>
+        <div class="card-body">
+            <h4 class="card-title">Quais seus jogos?</h4>
+             <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sistema</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var row in Model.MeusJogos) {
+                    <tr scope="row">
+                        <td>
+                            @row.Nome
+                        </td>
+                        <td>
+                            @row.Sistema
+                        </td/>
+                        <td>
+                            @row.Ano
+                        </td>
+                        <td>
+                           @row.Status
+                        </td>
+                         <td>
+                            <button type="button" class="btn btn-danger btn-block">Remover</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Jogos Emprestados</div>
+        <div class="card-body">
+            <h4 class="card-title">Quais seus jogos?</h4>
+             <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Amigo</th>
+                        <th scope="col">Sistema</th>
+                        <th scope="col">Devolver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var row in Model.JogosEmprestados) {
+                    <tr scope="row">
+                        <td>
+                            @row.Nome
+                        </td>
+                        <td>
+                            @row.Amigo
+                        </td/>
+                        <td>
+                            @row.Sistema
+                        </td>
+                         <td>
+                            <button type="button" class="btn btn-danger btn-block">Devolver</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
