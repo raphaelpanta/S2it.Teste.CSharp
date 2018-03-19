@@ -5,9 +5,8 @@
 ### Tecnologias utilizadas
 
 #### Back-end: 
-- .NET Core 2.1.101
-- SQL Server
-- Docker 
+- .NET Core 2.0
+- SQL Server 2017
 - MVC 6
 - C#
 
@@ -18,8 +17,10 @@
 
 ### Como subir a aplicação
 
-// TODO
+```bash 
+dotnet run --project apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc
+```
 
 ### Como executar os testes
 
-// TODO
+// TODO corrigir testes
