@@ -23,7 +23,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos {
                 InicioDaAmizade = DateTime.Today
             });
 
-            _repositorio.Adicionar (usuarioAtual);
+            _repositorio.Adicionar (usuarioAtual,  email);
         }
 
         public IEnumerable<DadosDoAmigo> NaoAdicionados (string email) {

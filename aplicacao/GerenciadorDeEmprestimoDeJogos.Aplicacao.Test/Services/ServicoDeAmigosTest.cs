@@ -55,7 +55,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
             .Returns(usuario);
 
 
-            repositorio.Setup(x => x.Adicionar(It.IsAny<Usuario>()));
+            repositorio.Setup(x => x.Adicionar(It.IsAny<Usuario>(), "raphaelpanta@gmail.com"));
 
             var identity = new ClaimsIdentity ();
             identity.AddClaim (new Claim ("email", "raphaelpanta@gmail.com"));
@@ -69,7 +69,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
 
             repositorio.Verify(x => x.PorEmail(It.Is<string>(y => y.Equals("raphaelpanta@gmail.com"))), Times.Once());
 
-            repositorio.Verify(x => x.Adicionar(It.IsAny<Usuario>()), Times.Once());
+            repositorio.Verify(x => x.Adicionar(It.IsAny<Usuario>(), "raphaelpanta@gmail.com"), Times.Once());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Api
 
         Usuario PorEmail(string id);
 
-        void Adicionar(Usuario amigo);
+        void Adicionar(Usuario amigo, string email);
     }
 
     public class UsuarioNaoEncontradoException : Exception {}
