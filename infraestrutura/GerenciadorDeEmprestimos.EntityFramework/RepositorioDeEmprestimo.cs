@@ -25,7 +25,7 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
         }
 
         public IEnumerable<Usuario> PorEmail (string email) {
-            return _context.Usuarios.Include(x =>x.Amigos).ThenInclude(x => x.MeuAmigo).Include(x =>x.Emprestimos).Include(x =>x.Jogos).Where (x => x.Credenciais.Email == email).ToList();
+            return _context.Usuarios.Include(x =>x.Amigos).ThenInclude(x => x.MeuAmigo).ThenInclude(x => x.Jogos).Include(x =>x.Emprestimos).Include(x =>x.Jogos).Where (x => x.Credenciais.Email == email).ToList();
         }
 
         public void RegistrarDevolucao (Emprestimo emprestimo) {

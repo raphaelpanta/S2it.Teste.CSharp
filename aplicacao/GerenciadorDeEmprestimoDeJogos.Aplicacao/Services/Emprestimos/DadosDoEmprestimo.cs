@@ -9,5 +9,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
         public IEnumerable<DadosDeJogo> MeusJogos { get; set;} 
 
         public IEnumerable<JogoEmprestado> JogosEmprestados { get;  set; }
+
+        public IEnumerable<JogoEmprestado> JogosAEmprestar { get; set; }
     }
 }

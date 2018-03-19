@@ -84,7 +84,7 @@
     <div class="card text-white bg-primary mb-3">
         <div class="card-header">Jogos Emprestados</div>
         <div class="card-body">
-            <h4 class="card-title">Quais seus jogos?</h4>
+            <h4 class="card-title">Para que você emprestou seus jogos?</h4>
              <table class="table table-condensed table-striped">
                 <thead>
                     <tr>
@@ -115,9 +115,43 @@
             </table>
         </div>
     </div>
+
+        <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Jogos a tomar Emprestado</div>
+        <div class="card-body">
+            <h4 class="card-title">Que jogo você quer tomar emprestado?</h4>
+             <table class="table table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Amigo</th>
+                        <th scope="col">Sistema</th>
+                        <th scope="col">Tomar emprestado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var row in Model.JogosAEmprestar) {
+                    <tr scope="row">
+                        <td>
+                            @row.Nome
+                        </td>
+                        <td>
+                            @row.Amigo
+                        </td/>
+                        <td>
+                            @row.Sistema
+                        </td>
+                         <td>
+                            <button type="button" class="btn btn-danger btn-block">Tomar emprestado</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="remover" tabindex="-1" role="dialog" aria-labelledby="removerCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
