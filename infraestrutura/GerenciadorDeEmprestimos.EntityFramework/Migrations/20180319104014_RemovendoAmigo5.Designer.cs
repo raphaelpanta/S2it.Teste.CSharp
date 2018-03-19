@@ -11,9 +11,10 @@ using System;
 namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
 {
     [DbContext(typeof(EmprestimoContext))]
-    partial class EmprestimoContextModelSnapshot : ModelSnapshot
+    [Migration("20180319104014_RemovendoAmigo5")]
+    partial class RemovendoAmigo5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,7 +30,7 @@ namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
 
                     b.Property<Guid>("MeuAmigoId");
 
-                    b.Property<Guid?>("UsuarioId");
+                    b.Property<Guid>("UsuarioId");
 
                     b.HasKey("Id");
 
@@ -107,7 +108,8 @@ namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
 
                     b.HasOne("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Usuario", "Usuario")
                         .WithMany("Amigos")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Emprestimo", b =>

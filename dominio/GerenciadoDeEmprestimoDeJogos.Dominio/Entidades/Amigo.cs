@@ -7,7 +7,7 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Entidades {
 
         public Usuario Usuario { get; set;}
        
-        public Guid UsuarioId { get;set; } 
+        public Guid? UsuarioId { get;set; } 
 
         public Guid MeuAmigoId {get; set;}
 

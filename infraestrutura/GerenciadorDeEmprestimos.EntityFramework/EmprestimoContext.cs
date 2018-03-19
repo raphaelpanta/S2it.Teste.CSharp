@@ -26,7 +26,9 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
 
             modelBuilder.Entity<Amigo>()
             .HasOne(x => x.Usuario)
-            .WithMany(x => x.Amigos);
+            .WithMany(x => x.Amigos)
+            .OnDelete(DeleteBehavior.ClientSetNull);
+
         }
     }
 }
