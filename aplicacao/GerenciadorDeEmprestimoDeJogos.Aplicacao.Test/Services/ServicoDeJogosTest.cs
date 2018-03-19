@@ -12,22 +12,22 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
         public void DeveAdicionarJogo () {
             var repositorio = new Mock<IRepositorioDeJogos> ();
 
-            repositorio.Setup (x => x.Adicionar (It.IsAny<Jogo> ()));
+            repositorio.Setup (x => x.Adicionar (It.IsAny<Jogo> (), "raphaelpanta@gmail.com"));
 
             var servico = new ServicoDeJogos (repositorio.Object) as IServicoDeJogos;
             servico.Adicionar (new DadosDoJogo {
                 Nome = "Jogo",
                     Sistema = "Super Nintendo",
                     Ano = 1990
-            });
-            repositorio.Verify (x => x.Adicionar (It.IsAny<Jogo> ()), Times.Once ());
+            }, "raphaelpanta@gmail.com");
+            repositorio.Verify (x => x.Adicionar (It.IsAny<Jogo> (), "raphaelpanta@gmail.com"), Times.Once ());
         }
 
         [Fact]
         public void DeveLancarExcecaoSeNaoCadastrar () {
             var repositorio = new Mock<IRepositorioDeJogos> ();
 
-            repositorio.Setup (x => x.Adicionar (It.IsAny<Jogo> ()))
+            repositorio.Setup (x => x.Adicionar (It.IsAny<Jogo> (), "raphaelpanta@gmail.com"))
                 .Throws (new JogoNaoPodeSerAdicionadoException ("msg", new Exception ()));
 
             var servico = new ServicoDeJogos (repositorio.Object) as IServicoDeJogos;
@@ -35,7 +35,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
                 Nome = "Jogo",
                     Sistema = "Super Nintendo",
                     Ano = 1990
-            });
+            }, "raphaelpanta@gmail.com");
 
             act.Should ().Throw<JogoNaoPodeSerAdicionadoException> ();
         }

@@ -5,9 +5,9 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos
 {
     public interface IServicoDeAmigos
     {
-        IEnumerable<DadosDoAmigo> NaoAdicionados ();
+        IEnumerable<DadosDoAmigo> NaoAdicionados (string email);
 
-        void Adicionar(Guid id);
+        void Adicionar(Guid id, string email);
 
     }
 }

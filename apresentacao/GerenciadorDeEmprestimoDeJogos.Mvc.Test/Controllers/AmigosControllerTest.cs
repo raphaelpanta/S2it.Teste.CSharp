@@ -16,7 +16,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             var servicoDeAmigos = new Mock<IServicoDeAmigos>();
 
             var id =  Guid.NewGuid();
-            servicoDeAmigos.Setup(x => x.NaoAdicionados()).Returns(new [] {
+            servicoDeAmigos.Setup(x => x.NaoAdicionados("raphaelpanta@gmail.com")).Returns(new [] {
                 new DadosDoAmigo { AmigoId = id, Nome = "Raphael"}
             });
 
@@ -35,9 +35,9 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             
             var servicoDeAmigos = new Mock<IServicoDeAmigos>();
             var id = Guid.NewGuid();
-            servicoDeAmigos.Setup(x => x.Adicionar(id));
+            servicoDeAmigos.Setup(x => x.Adicionar(id, "raphaelpanta@gmail.com"));
 
-            servicoDeAmigos.Setup(x => x.NaoAdicionados()).Returns(Enumerable.Empty<DadosDoAmigo>());
+            servicoDeAmigos.Setup(x => x.NaoAdicionados("raphaelpanta@gmail.com")).Returns(Enumerable.Empty<DadosDoAmigo>());
 
             var controller = new AmigosController(servicoDeAmigos.Object);
 

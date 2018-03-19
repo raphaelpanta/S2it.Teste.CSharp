@@ -9,16 +9,14 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos {
     public class ServicoDeAmigos : IServicoDeAmigos {
 
         private readonly IRepositorioDeAmigos _repositorio;
-        private readonly ClaimsPrincipal _principal;
-
-        public ServicoDeAmigos (IRepositorioDeAmigos repositorio, ClaimsPrincipal principal) {
+        
+        public ServicoDeAmigos (IRepositorioDeAmigos repositorio) {
             _repositorio = repositorio;
-            _principal = principal;
         }
-        public void Adicionar (Guid id) {
+        public void Adicionar (Guid id, string email) {
             var amigo = _repositorio.PorId (id);
 
-            var usuarioAtual = _repositorio.PorEmail (_principal.FindFirst (x => x.Type == "email").Value);
+            var usuarioAtual = _repositorio.PorEmail (email);
 
             usuarioAtual.Amigos.Add (new Amigo {
                 MeuAmigo = amigo,
@@ -28,8 +26,8 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos {
             _repositorio.Adicionar (usuarioAtual);
         }
 
-        public IEnumerable<DadosDoAmigo> NaoAdicionados () {
-            return _repositorio.NaoAdicionados (_principal.FindFirst (x => x.Type == "email").Value)
+        public IEnumerable<DadosDoAmigo> NaoAdicionados (string email) {
+            return _repositorio.NaoAdicionados (email)
                 .Select (x => new DadosDoAmigo {
                     AmigoId = x.Id,
                         Nome = x.Nome

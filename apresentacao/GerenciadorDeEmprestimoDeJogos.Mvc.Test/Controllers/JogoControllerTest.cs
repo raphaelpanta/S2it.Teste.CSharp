@@ -48,7 +48,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
                 Sistema = "Teste"
             };
 
-            servico.Setup(x =>x.Adicionar(jogo));
+            servico.Setup(x =>x.Adicionar(jogo, "raphaelpanta@gmail.com"));
 
             var controller = new JogoController(servico.Object);
 
@@ -65,7 +65,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
                 Nome = "nome"
             };
 
-            servico.Setup(x => x.Adicionar(jogo));
+            servico.Setup(x => x.Adicionar(jogo, "raphaelpanta@gmail.com"));
 
             var controller = new JogoController(servico.Object);
             controller.ModelState.AddModelError("Ano", "Deveria ser preenchido");

@@ -5,7 +5,7 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Api
 {
     public interface IRepositorioDeJogos
     {
-         void Adicionar(Jogo jogo);
+         void Adicionar(Jogo jogo, string email);
 
          Jogo PorId(Guid id);
 

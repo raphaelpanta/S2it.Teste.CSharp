@@ -4,7 +4,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Jogos
 {
     public interface IServicoDeJogos
     {
-         void Adicionar(DadosDoJogo jogo);
+         void Adicionar(DadosDoJogo jogo, string email);
 
          DadosDoJogo PorId(Guid id);
 

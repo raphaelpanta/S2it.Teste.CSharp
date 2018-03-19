@@ -26,9 +26,9 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
             identity.AddClaim (new Claim ("email", "raphaelpanta@gmail.com"));
             var principal = new ClaimsPrincipal (identity);
 
-            var servico = new ServicoDeAmigos (repositorio.Object, principal) as IServicoDeAmigos;
+            var servico = new ServicoDeAmigos (repositorio.Object) as IServicoDeAmigos;
 
-            var resultado = servico.NaoAdicionados ();
+            var resultado = servico.NaoAdicionados ("raphaelpanta@gmail.com");
 
             resultado.Should ().BeEquivalentTo (lista.Select(x => new DadosDoAmigo {
                Nome = x.Nome,
@@ -60,9 +60,9 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
             var identity = new ClaimsIdentity ();
             identity.AddClaim (new Claim ("email", "raphaelpanta@gmail.com"));
             var principal = new ClaimsPrincipal (identity);
-            var servico = new ServicoDeAmigos(repositorio.Object, principal);
+            var servico = new ServicoDeAmigos(repositorio.Object);
 
-            servico.Adicionar(id);
+            servico.Adicionar(id, "raphaelpanta@gmail.com");
 
 
             repositorio.Verify(x => x.PorId(It.Is<Guid>(y => y == id)), Times.Once());

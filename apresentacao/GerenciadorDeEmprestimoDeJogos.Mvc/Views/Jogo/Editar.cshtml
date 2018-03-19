@@ -1,0 +1,29 @@
+@model DadosDoJogo
+
+<div class="jumbotron">
+  <h1 class="display-3">Olá, xxxx!</h1>
+  <p class="lead">Nesta página poderá adicionar seus jogos!</p>
+  <hr class="my-4">
+
+  <form asp-action="Editar" asp-controller="Jogo" method="POST">
+  <fieldset>
+    <legend>Cadastrar Jogo</legend>
+    <div class="form-group">
+      <label asp-for="Nome"></label>
+      <input type="text" class="form-control" asp-for="Nome">
+      <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+      <label asp-for="Ano"></label>
+      <input type="number" class="form-control" asp-for="Ano">
+      <span asp-validation-for="Ano" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+      <label asp-for="Sistema"></label>
+      <input type="text" class="form-control" asp-for="Sistema">
+      <span asp-validation-for="Sistema" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+    </fieldset>
+    </form>
+  </div>

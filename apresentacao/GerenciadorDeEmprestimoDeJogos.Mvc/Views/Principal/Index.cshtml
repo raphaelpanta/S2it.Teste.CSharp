@@ -69,9 +69,7 @@
                            @row.Status
                         </td>
                          <td>
-                         <form asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId">
-                            <button type="submit" class="btn btn-warning btn-block">Editar</button>
-                         </form>
+                            <a asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId" class="btn btn-warning btn-block">Editar</a>
                          <form asp-action="RemoverJogo" asp-controller="Principal" asp-route-id="@row.JogoId">
                             <button type="submit" class="btn btn-danger btn-block">Remover</button>
                          </form>
