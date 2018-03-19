@@ -9,11 +9,20 @@
 - SQL Server 2017
 - MVC 6
 - C#
+- EF Core 2.0
+
+##### Testes
+- XUnit 
+- FluentAssertions
 
 #### Front-end:
 - Javascript
 - JQuery
 - BootStrap
+
+#### Ambiente
+- Ubuntu 17.04
+- Visual Studio Code
 
 ### Como subir a aplicação
 
@@ -24,3 +33,5 @@ dotnet run --project apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc
 ### Como executar os testes
 
 // TODO corrigir testes
+
+// TODO corrigir debitos técnicos
