@@ -5,6 +5,8 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
     public class EmprestimoContext : DbContext {
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Amigo> Amigos {get;set;}
+
         public DbSet<Jogo> Jogos { get; set; }
 
         public EmprestimoContext (DbContextOptions<EmprestimoContext> options) : base (options) {
@@ -20,13 +22,11 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
             modelBuilder.Entity<Usuario>()
             .HasMany(x => x.Amigos)
             .WithOne(x =>x.Usuario)
-            .HasForeignKey(x =>x.UsuarioId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .HasForeignKey(x =>x.UsuarioId);
 
             modelBuilder.Entity<Amigo>()
             .HasOne(x => x.Usuario)
-            .WithMany(x => x.Amigos)
-            .OnDelete(DeleteBehavior.Restrict);
+            .WithMany(x => x.Amigos);
         }
     }
 }

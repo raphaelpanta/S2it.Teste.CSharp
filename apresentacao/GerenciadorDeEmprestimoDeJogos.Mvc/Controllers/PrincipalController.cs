@@ -18,14 +18,14 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers {
 
         [HttpPost]
         public IActionResult RemoverAmigo (Guid id) {
-            _servicoDeEmprestimo.DefazerAmizadePorId (id);
-            return RedirectToAction ("Index");
+            _servicoDeEmprestimo.DefazerAmizadePorId (id, this.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value);
+            return RedirectToAction ("Index", "Principal");
         }
 
         [HttpPost]
         public IActionResult RemoverJogo (Guid id) {
-            _servicoDeEmprestimo.RemoverJogoPorId (id);
-            return Redirect ("Principal");
+            _servicoDeEmprestimo.RemoverJogoPorId (id, this.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value);
+            return RedirectToAction ("Index","Principal");
         }
     }
 }

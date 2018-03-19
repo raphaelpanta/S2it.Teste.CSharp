@@ -13,7 +13,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers {
         public void DeveRemoverAmizade () {
             var servico = new Mock<IServicoDeEmprestimo> ();
             var id = Guid.NewGuid ();
-            servico.Setup (x => x.DefazerAmizadePorId (id));
+            servico.Setup (x => x.DefazerAmizadePorId (id, "raphaelpanta@gmail.com"));
             servico.Setup (x => x.DadosDeEmprestimo ("raphaelpanta@gmail.com"))
                 .Returns (new DadosDoEmprestimo {
                     JogosEmprestados = Enumerable.Empty<JogoEmprestado> (),
@@ -34,7 +34,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers {
         public void DeveRemoverJogo () {
             var servico = new Mock<IServicoDeEmprestimo> ();
             var id = Guid.NewGuid ();
-            servico.Setup (x => x.RemoverJogoPorId (id));
+            servico.Setup (x => x.RemoverJogoPorId (id, "raphaelpanta@gmail.com"));
             servico.Setup (x => x.DadosDeEmprestimo ("raphaelpanta@gmail.com"))
                 .Returns (new DadosDoEmprestimo {
                     JogosEmprestados = Enumerable.Empty<JogoEmprestado> (),

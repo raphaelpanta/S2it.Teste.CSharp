@@ -6,12 +6,12 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
     {
          DadosDoEmprestimo DadosDeEmprestimo(string email);
 
-         void RemoverJogoPorId(Guid jogoId);
+         void RemoverJogoPorId(Guid jogoId, string email);
 
-         void TomarEmprestadoPor(Guid emprestimoId);
+         void TomarEmprestadoPor(Guid emprestimoId, string email);
 
-         void DevolverJogoPorId(Guid emprestimoId);
+         void DevolverJogoPorId(Guid emprestimoId, string email);
 
-         void DefazerAmizadePorId(Guid amigoId);
+         void DefazerAmizadePorId(Guid amigoId, string email);
      }
 }

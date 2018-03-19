@@ -13,7 +13,8 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
         }
         public void DesfazerAmizade (string email, Guid amigoId) {
             var usuario = _context.Usuarios.FirstOrDefault (x => x.Credenciais.Email == email);
-            var amigo = _context.Usuarios.Where (x => x.Credenciais.Email == email).SelectMany (x => x.Amigos).FirstOrDefault (x => x.MeuAmigo.Id == amigoId);
+            var amigo = _context.Usuarios.Include(x => x.Amigos).Where (x => x.Credenciais.Email == email).ToList().SelectMany (x => x.Amigos).FirstOrDefault (x => x.Id == amigoId);
+       
             usuario.Amigos.Remove (amigo);
 
             _context.SaveChanges ();

@@ -8,11 +8,9 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
 
         private readonly IRepositorioDeEmprestimo _repositorio;
 
-        private readonly ClaimsPrincipal _principal;
 
-        public ServicoDeEmprestimo(IRepositorioDeEmprestimo repositorio, ClaimsPrincipal principal) {
+        public ServicoDeEmprestimo(IRepositorioDeEmprestimo repositorio) {
             _repositorio = repositorio;
-            _principal = principal;
         }
 
         public DadosDoEmprestimo DadosDeEmprestimo (string email) {
@@ -45,23 +43,23 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
 
         }
 
-        public void DevolverJogoPorId (Guid emprestimoId) {
-           var emprestimo =_repositorio.EmprestimoPor(_principal.Claims.First(x => x.Type == "email").Value, emprestimoId);
+        public void DevolverJogoPorId (Guid emprestimoId, string email) {
+           var emprestimo =_repositorio.EmprestimoPor(email, emprestimoId);
            _repositorio.RegistrarDevolucao(emprestimo.First());
         }
 
-        public void DefazerAmizadePorId (Guid amigoId) 
+        public void DefazerAmizadePorId (Guid amigoId, string email) 
            {
-                _repositorio.DesfazerAmizade(_principal.Claims.First(x => x.Type == "email").Value, amigoId);
+                _repositorio.DesfazerAmizade(email, amigoId);
            }
 
-        public void RemoverJogoPorId (Guid jogoId) {
-            _repositorio.RemoverJogo(_principal.Claims.First(x => x.Type == "email").Value, jogoId);
+        public void RemoverJogoPorId (Guid jogoId, string email) {
+            _repositorio.RemoverJogo(email, jogoId);
         }
 
-        public void TomarEmprestadoPor (Guid jogoId) {
+        public void TomarEmprestadoPor (Guid jogoId, string email) {
 
-            _repositorio.RegistrarEmprestimo(_principal.Claims.First(x => x.Type == "email").Value, jogoId);
+            _repositorio.RegistrarEmprestimo(email, jogoId);
         }
     }
 }
