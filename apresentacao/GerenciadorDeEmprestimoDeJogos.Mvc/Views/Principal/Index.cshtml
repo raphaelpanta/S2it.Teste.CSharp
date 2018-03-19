@@ -28,9 +28,9 @@
                         <td>@row.JogosEmprestados
                         </td>
                         <td>
-                            <form asp-action="RemoverAmigo" asp-controller="Principal" asp-route-id="@row.AmigoId">
-                                <button type="submit" class="btn btn-danger btn-block">Remover</button>
-                            </form>
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#remover" data-url="@this.Url.Action("RemoverAmigo", "Principal")" data-id="/@row.AmigoId">
+                            Remover
+                            </button>
                         </td>
                     </tr>
                     }
@@ -70,10 +70,9 @@
                         </td>
                          <td>
                             <a asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId" class="btn btn-warning btn-block">Editar</a>
-                         <form asp-action="RemoverJogo" asp-controller="Principal" asp-route-id="@row.JogoId">
-                            <button type="submit" class="btn btn-danger btn-block">Remover</button>
-                         </form>
-                          
+                          <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#remover" data-url="@this.Url.Action("RemoverJogo", "Principal" )" data-id="/@row.JogoId">
+                            Remover
+                            </button>
                         </td>
                     </tr>
                     }
@@ -117,3 +116,42 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="remover" tabindex="-1" role="dialog" aria-labelledby="removerCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="remover">Deseja mesmo remover?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Após a remoção não poder ser mais desfeito!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form method="POST" action="">
+
+        <button type="submit" class="btn btn-danger">Remover</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+
+<script>
+    $('#remover').on('show.bs.modal', function(evt){
+        var button = $(evt.relatedTarget);
+        var url = button.data('url');
+        var id = button.data('id');
+
+        var modal = $(this);
+        console.log(modal.find('form')[0]);
+        $(modal.find('form')[0]).attr('action',url + id);
+    });
+</script>
+}
