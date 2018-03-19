@@ -11,9 +11,10 @@ using System;
 namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
 {
     [DbContext(typeof(EmprestimoContext))]
-    partial class EmprestimoContextModelSnapshot : ModelSnapshot
+    [Migration("20180319035638_RemovendoAmigo3")]
+    partial class RemovendoAmigo3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

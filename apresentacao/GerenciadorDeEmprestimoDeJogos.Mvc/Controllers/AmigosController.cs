@@ -1,9 +1,11 @@
 using System;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
+    [Authorize]
     public class AmigosController : Controller
     {
         private readonly IServicoDeAmigos _servicoDeAmigos;

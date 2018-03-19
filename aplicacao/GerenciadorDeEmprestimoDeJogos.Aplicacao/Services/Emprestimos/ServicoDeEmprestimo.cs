@@ -15,11 +15,12 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
             _principal = principal;
         }
 
-        public DadosDoEmprestimo DadosDeEmprestimo () {
-          return  _repositorio.PorEmail(_principal.Claims.First(x => x.Type == "email").Value)
+        public DadosDoEmprestimo DadosDeEmprestimo (string email) {
+        
+          return  _repositorio.PorEmail(email)
           .Select(x => new DadosDoEmprestimo {
               Amigos = x.Amigos.Select(a => new DadosDeAmigo {
-                  Nome = a.Usuario.Nome,
+                  Nome = a.MeuAmigo.Nome,
                   AmigoId = a.Id,
                   InicioDaAmizade = a.InicioDaAmizade,
                   JogosEmprestados = 0
@@ -39,7 +40,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos {
                     Ano = j.Ano,
                     Status = j.Emprestimo == null ? "Livre" : "Emprestado"
                 })       
-              }).First();
+              }).FirstOrDefault();
     
 
         }

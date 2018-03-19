@@ -21,7 +21,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
         }
 
         [Fact]
-        public void DeveRedirecionarATelaPrincipal() {
+        public async void DeveRedirecionarATelaPrincipal() {
             var servicoDeLogin = new Moq.Mock<IServicoDeLogin>();
             
             var credenciaisValidas = new CredenciaisDoUsuario{
@@ -32,14 +32,14 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             servicoDeLogin.Setup(s => s.Validar(credenciaisValidas)).Returns(true);
 
             var homeController = new HomeController(servicoDeLogin.Object);
-            var result = homeController.Login(credenciaisValidas) as RedirectResult;
+            var result = await homeController.Login(credenciaisValidas) as RedirectResult;
 
             result.Should().NotBeNull();
             result.Url.Should().Contain("Principal");
         }
 
         [Fact]
-        public void DeveRerenderizarNaoLogar(){
+        public async void DeveRerenderizarNaoLogar(){
             var servicoDeLogin = new Moq.Mock<IServicoDeLogin>();
             var credenciaisIncompletas = new CredenciaisDoUsuario 
             {
@@ -49,7 +49,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             servicoDeLogin.Setup(s => s.Validar(credenciaisIncompletas)).Returns(false);
             var homeController = new HomeController(servicoDeLogin.Object);
             homeController.ModelState.AddModelError("Senha", "nenhuma senha digitada");
-            var result = homeController.Login(credenciaisIncompletas) as ViewResult;
+            var result = await homeController.Login(credenciaisIncompletas) as ViewResult;
 
             result.Should().NotBeNull();
             result.ViewName.Should().Be("Index");

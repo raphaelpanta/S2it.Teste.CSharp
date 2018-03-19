@@ -4,7 +4,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
 {
     public interface IServicoDeEmprestimo
     {
-         DadosDoEmprestimo DadosDeEmprestimo();
+         DadosDoEmprestimo DadosDeEmprestimo(string email);
 
          void RemoverJogoPorId(Guid jogoId);
 

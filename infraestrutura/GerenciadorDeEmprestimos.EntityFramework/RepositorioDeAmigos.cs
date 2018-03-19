@@ -24,15 +24,14 @@ namespace GerenciadorDeEmprestimos.EntityFramework
 
         public IEnumerable<Usuario> NaoAdicionados(string email)
         {
-            return from u in _context.Usuarios 
-                   from a in _context.Usuarios
-                   where u.Credenciais.Email == email && !u.Amigos.Select(x =>x.MeuAmigo).Contains(a) 
-                select a;
+            return from u in _context.Usuarios
+                   where u.Credenciais.Email != email 
+                select u;
         }
 
         public Usuario PorEmail(string id)
         {
-            return (from u in _context.Usuarios
+            return (from u in _context.Usuarios.Include(x => x.Credenciais)
                    where u.Credenciais.Email == id
                    select u).First();
         }

@@ -16,6 +16,17 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
 
             modelBuilder.Entity<Usuario>()
             .OwnsOne(u => u.Endereco);
+
+            modelBuilder.Entity<Usuario>()
+            .HasMany(x => x.Amigos)
+            .WithOne(x =>x.Usuario)
+            .HasForeignKey(x =>x.UsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Amigo>()
+            .HasOne(x => x.Usuario)
+            .WithMany(x => x.Amigos)
+            .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

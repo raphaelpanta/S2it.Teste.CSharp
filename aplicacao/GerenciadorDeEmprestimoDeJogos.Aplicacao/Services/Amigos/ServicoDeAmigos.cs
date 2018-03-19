@@ -21,8 +21,8 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Amigos {
             var usuarioAtual = _repositorio.PorEmail (_principal.FindFirst (x => x.Type == "email").Value);
 
             usuarioAtual.Amigos.Add (new Amigo {
-                Usuario = amigo,
-                    InicioDaAmizade = DateTime.Today
+                MeuAmigo = amigo,
+                InicioDaAmizade = DateTime.Today
             });
 
             _repositorio.Adicionar (usuarioAtual);

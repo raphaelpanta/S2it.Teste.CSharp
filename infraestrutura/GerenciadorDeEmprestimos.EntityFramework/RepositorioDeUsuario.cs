@@ -12,8 +12,7 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
             _context = context;
         }
         public void Cadastrar (Usuario usuario) {
-            _context.Entry (usuario).State = EntityState.Added;
-
+            _context.Add(usuario);
             _context.SaveChanges ();
         }
 

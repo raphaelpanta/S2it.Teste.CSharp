@@ -1,9 +1,11 @@
 using System;
 using GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Jogos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
 {
+    [Authorize]
     public class JogoController : Controller
     {
         private readonly IServicoDeJogos _servicoDeJogos;

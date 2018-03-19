@@ -36,7 +36,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Test.Services {
 
             var servico = new ServicoDeEmprestimo (repositorio.Object, principal) as IServicoDeEmprestimo;
 
-            servico.DadosDeEmprestimo ()
+            servico.DadosDeEmprestimo ("raphaelpanta@gmail.com")
                 .Should ()
                 .BeEquivalentTo(new DadosDoEmprestimo{
                     Amigos = Enumerable.Empty<DadosDeAmigo>(),

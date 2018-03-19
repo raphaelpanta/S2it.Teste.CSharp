@@ -23,6 +23,8 @@ namespace GerenciadorDeEmprestimos.EntityFramework
         public void Editar(Jogo jogo)
         {
             _context.Entry(jogo).State = EntityState.Modified;
+
+            _context.SaveChanges();
         }
 
         public Jogo PorId(Guid id)

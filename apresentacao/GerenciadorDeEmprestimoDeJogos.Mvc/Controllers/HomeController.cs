@@ -22,18 +22,19 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
         public IActionResult Index() => View();
 
         [HttpPost]
-        public IActionResult Login(CredenciaisDoUsuario credenciais) {
+        public async Task<IActionResult> Login(CredenciaisDoUsuario credenciais) {
             if(ModelState.IsValid && _servicoDeLogin.Validar(credenciais)) {
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaim(new Claim("email", credenciais.Email));
+                identity.AddClaim(new Claim(ClaimTypes.Email, credenciais.Email));
+                identity.AddClaim(new Claim(ClaimTypes.Name, credenciais.Email));
                 
-                HttpContext
+                await HttpContext
                 .SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme, 
-                    new ClaimsPrincipal(identity))
-                .Wait();
+                    new ClaimsPrincipal(identity));
 
-                return Redirect("Principal");
+                return RedirectToAction("Index","Principal");
             }
             return View("Index", credenciais);
         }

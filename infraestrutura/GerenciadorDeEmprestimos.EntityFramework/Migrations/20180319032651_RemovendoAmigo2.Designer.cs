@@ -11,34 +11,15 @@ using System;
 namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
 {
     [DbContext(typeof(EmprestimoContext))]
-    partial class EmprestimoContextModelSnapshot : ModelSnapshot
+    [Migration("20180319032651_RemovendoAmigo2")]
+    partial class RemovendoAmigo2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Amigo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("InicioDaAmizade");
-
-                    b.Property<Guid>("MeuAmigoId");
-
-                    b.Property<Guid>("UsuarioId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MeuAmigoId");
-
-                    b.HasIndex("UsuarioId");
-
-                    b.ToTable("Amigo");
-                });
 
             modelBuilder.Entity("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Emprestimo", b =>
                 {
@@ -96,19 +77,6 @@ namespace GerenciadorDeEmprestimos.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Amigo", b =>
-                {
-                    b.HasOne("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Usuario", "MeuAmigo")
-                        .WithMany()
-                        .HasForeignKey("MeuAmigoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Usuario", "Usuario")
-                        .WithMany("Amigos")
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("GerenciadoDeEmprestimoDeJogos.Dominio.Entidades.Emprestimo", b =>

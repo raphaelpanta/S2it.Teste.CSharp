@@ -20,16 +20,15 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
         }
 
         public IEnumerable<Emprestimo> EmprestimoPor (string email, Guid id) {
-            return _context.Usuarios.Where (x => x.Credenciais.Email == email).SelectMany (x => x.Emprestimos).Where (x => x.Id == id);
+            return _context.Usuarios.Include (x => x.Emprestimos).Where (x => x.Credenciais.Email == email).SelectMany (x => x.Emprestimos).Where (x => x.Id == id);
         }
 
         public IEnumerable<Usuario> PorEmail (string email) {
-            return _context.Usuarios.Where (x => x.Credenciais.Email == email);
+            return _context.Usuarios.Include("Amigos").Include(x =>x.Emprestimos).Include(x =>x.Jogos).Where (x => x.Credenciais.Email == email).ToList();
         }
 
         public void RegistrarDevolucao (Emprestimo emprestimo) {
             _context.Entry (emprestimo).State = EntityState.Modified;
-
             _context.SaveChanges ();
         }
 
