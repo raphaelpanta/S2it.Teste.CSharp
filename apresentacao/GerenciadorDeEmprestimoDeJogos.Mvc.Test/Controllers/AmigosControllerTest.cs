@@ -11,9 +11,10 @@ using Xunit;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 {
-    public class AmigosControllerTest
-    {
-        private void SetUpContextFor(Controller c) {
+
+    public static class Utils {
+
+        public static void SetTestContext(this Controller c) {
              c.ControllerContext = new ControllerContext {
                 HttpContext = new DefaultHttpContext()
             };
@@ -22,6 +23,11 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
                 new Claim("email", "raphaelpanta@gmail.com")
             }));
         }
+        
+    }
+
+    public class AmigosControllerTest
+    {
         [Fact]
         public void DeveListarAmigosNaoAdicionados()
         {
@@ -34,7 +40,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             });
 
             var controller = new AmigosController(servicoDeAmigos.Object);
-            SetUpContextFor(controller);
+            controller.SetTestContext();
             
             
             var result = controller.Index() as ViewResult;
@@ -56,7 +62,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             servicoDeAmigos.Setup(x => x.NaoAdicionados("raphaelpanta@gmail.com")).Returns(Enumerable.Empty<DadosDoAmigo>());
 
             var controller = new AmigosController(servicoDeAmigos.Object);
-            SetUpContextFor(controller);
+            controller.SetTestContext();
             var result = controller.Index(id) as ViewResult;
 
             result.Should().NotBeNull();

@@ -22,9 +22,8 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers {
                 });
 
             var controller = new PrincipalController (servico.Object);
-
+            controller.SetTestContext();
             var result = controller.RemoverAmigo (id) as RedirectToActionResult;
-
             result.Should ().NotBeNull ();
 
             result.ActionName.Should ().Be ("Index");
@@ -43,12 +42,14 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers {
                 });
 
             var controller = new PrincipalController (servico.Object);
-
-            var result = controller.RemoverJogo (id) as RedirectResult;
+            controller.SetTestContext();
+            var result = controller.RemoverJogo (id) as RedirectToActionResult;
 
             result.Should ().NotBeNull ();
 
-            result.Url.Should ().Contain ("Principal");
+            result.ControllerName.Should ().Contain ("Principal");
+            result.ActionName.Should ().Contain ("Index");
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             var controller = new JogoController(servico.Object);
 
             var result = controller.Index() as ViewResult;
-            
+            controller.SetTestContext();
             result.Should().NotBeNull();
             result.Model.Should().BeEquivalentTo(new DadosDoJogo());
         }
@@ -33,6 +33,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             servico.Setup(x => x.PorId(id)).Returns(jogo);
 
             var controller = new JogoController(servico.Object);
+            controller.SetTestContext();
             var result = controller.Editar(id) as ViewResult;
             
             result.Should().NotBeNull();
@@ -51,7 +52,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             servico.Setup(x =>x.Adicionar(jogo, "raphaelpanta@gmail.com"));
 
             var controller = new JogoController(servico.Object);
-
+            controller.SetTestContext();
             var result = controller.Index(jogo) as RedirectResult;
 
             result.Should().NotBeNull();
@@ -71,7 +72,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
             controller.ModelState.AddModelError("Ano", "Deveria ser preenchido");
             
             var result = controller.Index(jogo) as ViewResult;
-
+            controller.SetTestContext();
             result.Should().NotBeNull();
 
             result.Model.Should().Be(jogo);
