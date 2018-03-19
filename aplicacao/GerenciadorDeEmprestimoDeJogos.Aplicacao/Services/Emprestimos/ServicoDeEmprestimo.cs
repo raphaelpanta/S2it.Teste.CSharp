@@ -37,7 +37,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
                       Amigo = je.Jogo.Dono.Nome,
                       Sistema = je.Jogo.Sistema
                   }),
-                JogosAEmprestar = x.Amigos.SelectMany(a => a.MeuAmigo.Jogos)
+                JogosAEmprestar = x.Amigos.SelectMany(a => a.MeuAmigo.Jogos).Where(j => j.Emprestimo == null || j.Emprestimo.DataDeDevolucao != null)
                   .Select(j => new JogoEmprestado
                   {
                       EmprestimoId = j.Id,
@@ -53,7 +53,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
                       Sistema = j.Sistema,
                       Nome = j.Nome,
                       Ano = j.Ano,
-                      Status = j.Emprestimo == null ? "Livre" : "Emprestado"
+                      Status = j.Emprestimo == null || j.Emprestimo.DataDeDevolucao != null ? "Livre" : "Emprestado"
                   })
             }).FirstOrDefault();
 

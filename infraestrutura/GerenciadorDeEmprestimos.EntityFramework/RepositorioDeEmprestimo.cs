@@ -39,7 +39,7 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
                 DataDeEmprestimo = DateTime.Today
             };
 
-            var usuario = _context.Usuarios.FirstOrDefault (x => x.Credenciais.Email == email);
+            var usuario = _context.Usuarios.Include(x => x.Emprestimos).FirstOrDefault (x => x.Credenciais.Email == email);
             usuario.Emprestimos.Add (emprestimo);
 
             _context.SaveChanges ();

@@ -142,7 +142,9 @@
                             @row.Sistema
                         </td>
                          <td>
-                            <button type="button" class="btn btn-danger btn-block">Tomar emprestado</button>
+                         <form asp-action="TomarEmprestado" asp-controller="Principal" asp-route-id="@row.EmprestimoId">
+                            <button type="submit" class="btn btn-danger btn-block">Tomar emprestado</button>
+                         </form>
                         </td>
                     </tr>
                     }

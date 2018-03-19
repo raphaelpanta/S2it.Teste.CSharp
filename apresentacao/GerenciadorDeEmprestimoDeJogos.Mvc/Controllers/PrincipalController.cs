@@ -6,6 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers {
 
+    public static class CtrlUtils {
+        public static string GetEmailFromUser(this Controller controller) {
+            return controller.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value;
+        }
+    }
+
     [Authorize]
     public class PrincipalController : Controller {
 
@@ -14,18 +20,24 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers {
         public PrincipalController (IServicoDeEmprestimo servicoDeEmprestimo) {
             _servicoDeEmprestimo = servicoDeEmprestimo;
         }
-        public IActionResult Index () => View (_servicoDeEmprestimo.DadosDeEmprestimo (this.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value));
+        public IActionResult Index () => View (_servicoDeEmprestimo.DadosDeEmprestimo (this.GetEmailFromUser()));
 
         [HttpPost]
         public IActionResult RemoverAmigo (Guid id) {
-            _servicoDeEmprestimo.DefazerAmizadePorId (id, this.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value);
+            _servicoDeEmprestimo.DefazerAmizadePorId (id, this.GetEmailFromUser());
             return RedirectToAction ("Index", "Principal");
         }
 
         [HttpPost]
         public IActionResult RemoverJogo (Guid id) {
-            _servicoDeEmprestimo.RemoverJogoPorId (id, this.HttpContext.User.Claims.First(x => x.Type.Equals("email")).Value);
+            _servicoDeEmprestimo.RemoverJogoPorId (id, this.GetEmailFromUser());
             return RedirectToAction ("Index","Principal");
+        }
+
+        [HttpPost]
+        public IActionResult TomarEmprestado(Guid id){
+             _servicoDeEmprestimo.TomarEmprestadoPor(id,this.GetEmailFromUser());
+             return RedirectToAction ("Index","Principal");
         }
     }
 }
