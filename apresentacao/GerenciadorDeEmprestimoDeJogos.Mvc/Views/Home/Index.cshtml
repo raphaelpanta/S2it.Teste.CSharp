@@ -16,10 +16,10 @@
   <hr class="my-4">
   <p>Ainda não se cadastrou?</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" asp-controller="Cadastro" asp-action="Index" role="button">Inscreva-se</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Cadastro" asp-action="Index" role="button"><span class="oi oi-file"></span> Inscreva-se</a>
   </p>
   <hr class="my-4">
-  <p>Já sou cadastrado!</p>
+  <h1>Já sou cadastrado!</h1>
   <p class="lead">
     <form asp-action="Login" asp-controller="Home" method="POST">
        <div class="form-group">
@@ -32,7 +32,7 @@
         <input type="password" class="form-control" asp-for="Senha"/>
         <span asp-validation-for="Senha" class="text-danger"></span>
       </div>
-      <button type="submit" class="btn btn-success btn-lg">Entrar</button>
+      <button type="submit" class="btn btn-success btn-lg"><span class="oi oi-account-login"></span> Entrar</button>
     </form>
   </p>
 </div>

@@ -7,16 +7,18 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootswatch/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/iconic/open-iconic-bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment>
         <link rel="stylesheet" href="~/lib/bootswatch/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/iconic/open-iconic-bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" asp-controller="Home" asp-action="Index">Gerenciador de Emprestimo de Jogos - S2IT</a>
+  <a class="navbar-brand" asp-controller="Home" asp-action="Index"><span class="oi oi-play-circle"></span>Gerenciador de Emprestimo de Jogos - S2IT</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,11 +26,11 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" asp-controller="Home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" asp-controller="Home"> <span class="oi oi-home"></span>Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
-    <form asp-action="Logout" asp-controller="Home"><button type="submit" class="btn btn-danger btn-sm btn-block">Logout</button></form>
+    <form asp-action="Logout" asp-controller="Home"><button type="submit" class="btn btn-danger btn-sm btn-block"><span class="oi oi-account-logout"></span> Logout</button></form>
 </nav>
     <div class="container body-content">
         @RenderBody()

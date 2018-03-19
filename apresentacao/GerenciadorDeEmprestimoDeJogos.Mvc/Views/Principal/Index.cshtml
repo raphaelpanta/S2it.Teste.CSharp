@@ -6,7 +6,7 @@
   <hr class="my-4">
 
     <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Amigos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Amigos">Adicionar</a></div>
+        <div class="card-header">Amigos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Amigos"><span class="oi oi-plus"></span> Adicionar</a></div>
         <div class="card-body">
             <h4 class="card-title">Quais são seus amigos?</h4>
              <table class="table table-condensed table-striped">
@@ -29,7 +29,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#remover" data-url="@this.Url.Action("RemoverAmigo", "Principal")" data-id="/@row.AmigoId">
-                            Remover
+                            <span class="oi oi-action-redo"></span>Remover
                             </button>
                         </td>
                     </tr>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Meus jogos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Jogo">Adicionar</a></div>
+        <div class="card-header">Meus jogos <a class="btn btn-success btn-sm" asp-action="Index" asp-controller="Jogo"><span class="oi oi-plus"></span> Adicionar</a></div>
         <div class="card-body">
             <h4 class="card-title">Quais seus jogos?</h4>
              <table class="table table-condensed table-striped">
@@ -69,9 +69,9 @@
                            @row.Status
                         </td>
                          <td>
-                            <a asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId" class="btn btn-warning btn-block">Editar</a>
+                            <a asp-action="Editar" asp-controller="Jogo" asp-route-id="@row.JogoId" class="btn btn-warning btn-block"><span class="oi oi-pencil"></span> Editar</a>
                           <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#remover" data-url="@this.Url.Action("RemoverJogo", "Principal" )" data-id="/@row.JogoId">
-                            Remover
+                            <span class="oi oi-action-redo"></span> Remover
                             </button>
                         </td>
                     </tr>
@@ -108,7 +108,7 @@
                         </td>
                          <td>
                             <form asp-action="Devolver" asp-controller="Principal" asp-route-id="@row.EmprestimoId">
-                                <button type="submit" class="btn btn-danger btn-block">Devolver</button>
+                                <button type="submit" class="btn btn-danger btn-block"><span class="oi oi-action-undo"></span> Devolver</button>
                             </form>
                         </td>
                     </tr>
@@ -145,7 +145,7 @@
                         </td>
                          <td>
                          <form asp-action="TomarEmprestado" asp-controller="Principal" asp-route-id="@row.EmprestimoId">
-                            <button type="submit" class="btn btn-danger btn-block">Tomar emprestado</button>
+                            <button type="submit" class="btn btn-success btn-block"> <span class="oi oi-transfer"></span> Tomar emprestado</button>
                          </form>
                         </td>
                     </tr>
