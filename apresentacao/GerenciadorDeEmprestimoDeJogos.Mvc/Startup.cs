@@ -32,7 +32,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<EmprestimoContext>(opts => opts.UseInMemoryDatabase("teste"));
+            services.AddDbContext<EmprestimoContext>(opts => opts.UseSqlServer("Server=localhost;User Id=teste;Password=Test1234;Initial Catalog=EMPRESTIMO"));
             services.AddTransient<ClaimsPrincipal>(s => s.GetService<HttpContextAccessor>()?.HttpContext?.User);
 
             services.AddScoped<IServicoDeLogin, ServicoDeLogin>()
