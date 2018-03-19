@@ -32,6 +32,16 @@ dotnet run --project apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc
 
 ### Como executar os testes
 
-// TODO corrigir testes
+```bash
+dotnet test
+```
 
 // TODO corrigir debitos técnicos
+
+### EF Core migrations
+
+```bash
+cd infrastrutura/GerenciadorDeEmprestimoDeJogos.EntityFramework
+dotnet ef migration update --startup-project ../../apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc
+
+```
