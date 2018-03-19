@@ -39,6 +39,12 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
             return View("Index", credenciais);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout() {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Error() => 
             View(new ErrorViewModel { 
                     RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
