@@ -39,5 +39,11 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers {
              _servicoDeEmprestimo.TomarEmprestadoPor(id,this.GetEmailFromUser());
              return RedirectToAction ("Index","Principal");
         }
+
+        [HttpPost]
+        public IActionResult Devolver(Guid id){
+             _servicoDeEmprestimo.DevolverJogoPorId(id,this.GetEmailFromUser());
+             return RedirectToAction ("Index","Principal");
+        }
     }
 }

@@ -84,7 +84,7 @@
     <div class="card text-white bg-primary mb-3">
         <div class="card-header">Jogos Emprestados</div>
         <div class="card-body">
-            <h4 class="card-title">Para que você emprestou seus jogos?</h4>
+            <h4 class="card-title">De quem você tomou emprestado seus jogos?</h4>
              <table class="table table-condensed table-striped">
                 <thead>
                     <tr>
@@ -107,7 +107,9 @@
                             @row.Sistema
                         </td>
                          <td>
-                            <button type="button" class="btn btn-danger btn-block">Devolver</button>
+                            <form asp-action="Devolver" asp-controller="Principal" asp-route-id="@row.EmprestimoId">
+                                <button type="submit" class="btn btn-danger btn-block">Devolver</button>
+                            </form>
                         </td>
                     </tr>
                     }

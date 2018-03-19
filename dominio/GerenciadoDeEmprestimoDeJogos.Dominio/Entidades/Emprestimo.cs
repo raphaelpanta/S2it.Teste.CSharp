@@ -12,9 +12,8 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Entidades {
 
         public DateTime? DataDeDevolucao { get; set; }
 
-        public void Devolver(IRepositorioDeEmprestimo repositorio) {
+        public void Devolver() {
             DataDeDevolucao = DateTime.Today;
-            repositorio.RegistrarDevolucao(this);
         }
     }
 }

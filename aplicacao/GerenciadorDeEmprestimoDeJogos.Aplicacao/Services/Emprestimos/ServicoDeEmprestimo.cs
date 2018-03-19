@@ -29,7 +29,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
                     InicioDaAmizade = a.InicioDaAmizade,
                     JogosEmprestados = 0
                 }),
-                JogosEmprestados = x.Emprestimos
+                JogosEmprestados = x.Emprestimos.Where(e => e.DataDeDevolucao == null)
                   .Select(je => new JogoEmprestado
                   {
                       EmprestimoId = je.Id,
@@ -62,8 +62,8 @@ namespace GerenciadorDeEmprestimoDeJogos.Aplicacao.Services.Emprestimos
 
         public void DevolverJogoPorId(Guid emprestimoId, string email)
         {
-            var emprestimo = _repositorio.EmprestimoPor(email, emprestimoId);
-            _repositorio.RegistrarDevolucao(emprestimo.First());
+            
+            _repositorio.RegistrarDevolucao(email, emprestimoId);
         }
 
         public void DefazerAmizadePorId(Guid amigoId, string email)
