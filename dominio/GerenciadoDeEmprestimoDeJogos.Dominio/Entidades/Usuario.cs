@@ -10,16 +10,16 @@ namespace GerenciadoDeEmprestimoDeJogos.Dominio.Entidades
 
         public string Nome { get; set; }
 
-        public Credenciais Credenciais {get; set;}
+        public virtual Credenciais Credenciais {get; set;}
 
         public DateTime DataDeNascimento { get;set; }
 
-        public Endereco Endereco { get; set; }
+        public virtual Endereco Endereco { get; set; }
 
-        public ICollection<Amigo> Amigos { get; set; }
+        public virtual ICollection<Amigo> Amigos { get; set; }
 
-        public ICollection<Jogo> Jogos { get; set; }
+        public virtual ICollection<Jogo> Jogos { get; set; }
 
-        public ICollection<Emprestimo> Emprestimos { get; set; }
+        public virtual ICollection<Emprestimo> Emprestimos { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace GerenciadorDeEmprestimos.EntityFramework {
         }
 
         public Credenciais Por (string email) {
-            return _context.Usuarios.Select (x => x.Credenciais).FirstOrDefault (x => x.Email == email);
+            return _context.Usuarios.Include(u => u.Credenciais).Select (x => x.Credenciais).FirstOrDefault (x => x.Email == email);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Controllers
         public IActionResult Index() => View(new DadosDoUsuario());
 
         [HttpPost]
-        public IActionResult Cadastrar(DadosDoUsuario dados) {
+        public IActionResult Index(DadosDoUsuario dados) {
             if(ModelState.IsValid) 
             { 
                 _servicoDeLogin.Cadastrar(dados);

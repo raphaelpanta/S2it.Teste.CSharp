@@ -72,7 +72,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 
             var controller = new CadastroController(servico.Object);
             controller.TempData = new DummyTempDataDictionary();
-            var result = controller.Cadastrar(usuario) as RedirectToActionResult;
+            var result = controller.Index(usuario) as RedirectToActionResult;
 
             result.Should().NotBeNull();
 
@@ -89,7 +89,7 @@ namespace GerenciadorDeEmprestimoDeJogos.Mvc.Test.Controllers
 
             controller.ModelState.AddModelError("Email", "preencher email");  
             
-            var result = controller.Cadastrar(new DadosDoUsuario{
+            var result = controller.Index(new DadosDoUsuario{
                 Nome = "Raphael ",
             }) as ViewResult;
 
