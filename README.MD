@@ -14,6 +14,8 @@
 ##### Testes
 - XUnit 
 - FluentAssertions
+##### Conteinerização
+- Docker
 
 #### Front-end:
 - Javascript
@@ -44,4 +46,10 @@ dotnet test
 cd infrastrutura/GerenciadorDeEmprestimoDeJogos.EntityFramework
 dotnet ef migration update --startup-project ../../apresentacao/GerenciadorDeEmprestimoDeJogos.Mvc
 
+```
+
+### Usando docker
+
+```bash
+docker-compose up --build
 ```
